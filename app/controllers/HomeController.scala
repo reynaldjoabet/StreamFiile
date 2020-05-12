@@ -15,6 +15,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     Writeable[String](str => codec.encode(str))
 
    */
+  val logger=play.api.Logger(getClass)
   implicit  val ec:ExecutionContext=cc.executionContext
   def index: Action[AnyContent] = Action {
     Ok(views.html.index("Your new application is ready."))
@@ -29,6 +30,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
   def streamFile: Action[AnyContent] =Action{ request=>
     val file= new java.io.File("location of file")
+    logger.info("sending file")
     Ok.sendFile(file)
   }
 
