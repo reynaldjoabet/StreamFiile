@@ -25,7 +25,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   // simply import the default implementation
   def streamList: Action[AnyContent] =Action{ request=>
     import  play.api.http.Writeable.wString
-    val source=Source.apply(List("Peter","Kelly","Pius","Herman","Paul"))
+    val source=Source.apply(List("Physics","Mathematics","Biology","Computer Science","Chemistry"))
     Ok.chunked(source)
   }
   def streamFile: Action[AnyContent] =Action{ request=>
